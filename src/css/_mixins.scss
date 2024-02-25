@@ -1,0 +1,35 @@
+@mixin section-grid ($template) {
+  display: grid;
+  grid-row-gap: $grid-gap;
+  grid-column-gap: $grid-gap;
+  grid-template-columns: $template;
+}
+
+@mixin font-text ($family, $weight, $size, $height, $color) {
+  font-family: $family;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $height;
+  color: $color;
+}
+
+@mixin pos-abs ($m1, $mn1, $m2, $mn2) {
+  position: absolute;
+  #{$m1}: $mn1;
+  #{$m2}: $mn2;
+}
+
+@mixin anim-input ($field, $m-top-error) {
+  #{$field}:focus {
+    border: 1px solid #FF6E30;
+  }
+
+  #{$field}:hover::placeholder {
+    color: #FF6E30;
+  }
+
+  #{$field}:invalid:not(:placeholder-shown)+.input-error {
+    display: block;
+    top: $m-top-error;
+  }
+}

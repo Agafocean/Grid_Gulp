@@ -1,0 +1,562 @@
+@import "vars";
+@import "mixins";
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2 {
+  margin: 0;
+}
+
+img {
+  display: block;
+  object-fit: cover;
+}
+
+section {
+  margin-bottom: 68px;
+}
+
+@font-face {
+  font-family: "TTFirsNeue";
+  src: local("TTFirsNeue-Regular"), url("../fonts/TTFirsNeue-Regular.woff2") format("woff2"),
+    url("../fonts/TTFirsNeue-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TTFirsNeue";
+  src: local("TTFirsNeue-Bold"), url("../fonts/TTFirsNeue-Bold.woff2") format("woff2"),
+    url("../fonts/TTFirsNeue-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Regular"), url("../fonts/Roboto-Regular.woff2") format("woff2"),
+    url("../fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: local("Roboto-Bold"), url("../fonts/Roboto-Bold.woff2") format("woff2"),
+    url("../fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  min-width: 320px;
+  font-family: 'TTFirsNeue', 'Roboto', sans-serif;
+  background-color: #ffffff;
+}
+
+/* glob */
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1320px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.input-error {
+  display: none;
+  @include pos-abs (top, 3px, left, 23px);
+  @include font-text ("Roboto", 400, 9px, 11px, #F06666);
+}
+
+.btn {
+  padding: 15.5px 22px;
+  background-color: #FF6E30;
+  @include font-text ("Roboto", 700, 16px, 19px, #ffffff);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:focus {
+  background-color: #FF6E30;
+  border: 3px solid #CE4307;
+  padding: 12.5px 19px;
+}
+
+.btn:hover {
+  background-color: #BC572B;
+}
+
+.btn:active {
+  background-color: #CE4307;
+}
+
+.section-title {
+  @include font-text ("TTFirsNeue", 700, 24px, 31px, #202020);
+}
+
+.hamburger-menu,
+#menu__search-toggle,
+.header-search-cross,
+#search-bar {
+  display: none;
+}
+
+.search-box {
+  position: relative;
+  justify-self: end;
+  align-self: center;
+}
+
+.search-label {
+  cursor: pointer;
+}
+
+#search-bar {
+  position: absolute;
+  top: 0;
+  left: -940px;
+  width: 935px;
+  border-bottom: 1px solid #e9e9e9;
+  background-color: #202020;
+  color: #E9E9E9;
+}
+
+#search-bar:focus,
+#search-bar:hover {
+  border-bottom: 1px solid #FF6E30;
+}
+
+#search-bar:active {
+  border-bottom: 1px solid #CE4307;
+}
+
+#menu__search-toggle:checked~.search-label>.header-search {
+  display: none;
+}
+
+#menu__search-toggle:checked~.search-label>.header-search-cross {
+  display: block;
+}
+
+#menu__search-toggle:checked~#search-bar {
+  display: block;
+}
+
+/* header */
+.header {
+  background-color: #202020;
+  margin-bottom: 41px;
+}
+
+.header__container {
+  display: grid;
+  grid-template-columns: 330px 1fr 139px;
+  padding-top: 24px;
+  padding-bottom: 25px;
+}
+
+.header__menu {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+}
+
+.header__item {
+  width: fit-content;
+  @include font-text ("TTFirsNeue", 400, 16px, 21px, #ffffff);
+  align-self: center;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.header__item:focus {
+  background-color: #BC572B;
+  color: #ffffff;
+}
+
+.header__item:hover {
+  color: #FF6E30;
+}
+
+.header__item:active {
+  color: #CE4307;
+  background-color: inherit;
+}
+
+/* hero */
+.hero__container {
+  @include section-grid (repeat(3, auto));
+}
+
+.hero__img1 {
+  position: relative;
+  grid-row: 1/3;
+}
+
+.hero__img2-text {
+  @include font-text ("TTFirsNeue", 700, 24px, 25px, #202020);
+  margin-bottom: 18px;
+}
+
+.hero__img2 {
+  grid-column: 2/4;
+}
+
+.hero__hashtag {
+  @include pos-abs (top, 15px, right, 15px);
+  padding: 7px 14px;
+  @include font-text ("Roboto", 400, 14px, 17px, #ffffff);
+  background-color: #202020;
+}
+
+.hero__text {
+  @include pos-abs (bottom, 60px, left, 60px);
+}
+
+.hero__text1 {
+  @include font-text ("Roboto", 400, 16px, 19px, #ffffff);
+}
+
+.hero__text2 {
+  max-width: 427px;
+  @include font-text ("TTFirsNeue", 700, 36px, 37px, #ffffff);
+  margin-bottom: 19px;
+}
+
+/* about */
+.about {
+  padding-top: 30px;
+  padding-bottom: 69px;
+  background-color: #202020;
+}
+
+.about__container {
+  @include section-grid (repeat(2, 1fr));
+}
+
+.about__section-title {
+  color: #ffffff;
+  margin-bottom: 2px
+}
+
+.about__text {
+  padding-top: 3px;
+  @include font-text ("Roboto", 400, 16px, 28px, #cacaca);
+}
+
+.about__img {
+  margin-bottom: 25px;
+}
+
+.about__subscr {
+  @include font-text ("TTFirsNeue", 400, 24px, 22px, #ffffff);
+  margin-bottom: 16px;
+}
+
+.about__form {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(50px, 474px) auto;
+  grid-column-gap: 30px;
+}
+
+.about__email {
+  padding: 15px 23px;
+  background-color: #4A4A4A;
+  @include font-text ("Roboto", 400, 16px, 19px, #cacaca);
+  transition: color 0.3s ease-in-out;
+}
+
+@include anim-input (".about__email", 3px);
+
+/* projects */
+.projects__container {
+  @include section-grid (repeat(5 auto));
+}
+
+.projects__section-title {
+  margin-bottom: 12px;
+}
+
+.projects__div11,
+.projects__div12,
+.projects__div13 {
+  display: grid;
+  grid-template-rows: 202px auto auto;
+}
+
+.projects__cdate {
+  align-self: end;
+}
+
+.projects__img1 {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.projects__hashtag {
+  @include pos-abs (top, 7px, right, 7px);
+  padding: 6px 14px;
+  @include font-text ("Roboto", 400, 14px, 16px, #ffffff);
+  background-color: #202020;
+}
+
+.projects__text {
+  @include font-text ("Roboto", 400, 16px, 22px, #202020);
+  margin-bottom: 10px;
+}
+
+.projects__div11 .projects__text::before {
+  content: "Синтетически, смешаны с не уникальными данными до степени…";
+}
+
+.projects__div12 .projects__text::before {
+  content: "В своём стремлении улучшить опыт мы упускаем, что явные...";
+}
+
+.projects__div13 .projects__text::before {
+  content: "Равным образом, высокое качество позиционных…";
+}
+
+.projects__calendar {
+  display: inline;
+  vertical-align: middle;
+}
+
+.projects__date {
+  @include font-text ("Roboto", 400, 12px, 22px, #999999);
+}
+
+.projects__img2 {
+  position: relative;
+  grid-column: 4/6;
+  width: 100%;
+}
+
+.projects__img-text {
+  @include pos-abs (top, 22px, left, 30px);
+  max-width: 292px;
+}
+
+.projects__img-date {
+  @include font-text ("Roboto", 400, 12px, 22px, #ffffff);
+}
+
+.projects__img-text1 {
+  @include font-text ("TTFirsNeue", 700, 24px, 24px, #ffffff);
+  margin-bottom: 6px;
+  padding-top: 1px;
+}
+
+.projects__img-text2 {
+  @include font-text ("Roboto", 400, 16px, 22px, #ffffff);
+}
+
+.projects__btn {
+  @include pos-abs (bottom, 30px, left, 30px);
+  background-color: transparent;
+  border: 3px solid #FF6E30;
+  padding: 12.5px 19px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.projects__btn:focus {
+  background-color: #BC572B;
+  border: 3px solid #FF6E30;
+}
+
+.projects__btn:hover {
+  background-color: #FF6E30;
+}
+
+.projects__btn:active {
+  background-color: #CE4307;
+}
+
+.projects__img3 {
+  position: relative;
+  grid-column: 1/4;
+}
+
+/* contacts */
+.contacts__container {
+  @include section-grid (auto auto);
+  align-items: end;
+}
+
+.contacts__section-title {
+  margin-bottom: 16px;
+}
+
+.contacts__left {
+  position: relative;
+}
+
+.contacts__map-point {
+  @include pos-abs (top, 95px, right, 227px);
+}
+
+.contacts__dark {
+  display: grid;
+  @include pos-abs (top, 0, left, 0);
+  width: 410px;
+  height: 100%;
+  background-color: #202020;
+  opacity: 0.85;
+  padding-top: 175px;
+  padding-left: 60px;
+}
+
+.contacts__x {
+  @include pos-abs (top, 20px, right, 20px);
+}
+
+.contacts__dark-content {
+  max-width: 272px;
+}
+
+.contacts__dark-text1 {
+  @include font-text ("TTFirsNeue", 400, 24px, 22px, #ffffff);
+  margin-bottom: 5px;
+}
+
+.contacts__dark-text2,
+.contacts__dark-text3 {
+  @include font-text ("Roboto", 400, 16px, 28px, #cacaca);
+}
+
+.contacts__dark-tel-sign {
+  display: inline;
+  vertical-align: middle;
+}
+
+.contacts__dark-tel {
+  @include font-text ("TTFirsNeue", 400, 16px, 21px, #FF6E30);
+}
+
+.contacts__right-text1 {
+  @include font-text ("TTFirsNeue", 400, 24px, 22px, #202020);
+  margin-bottom: 5px;
+}
+
+.contacts__right-text2 {
+  max-width: 409px;
+  @include font-text ("Roboto", 400, 16px, 22px, #999999);
+  margin-bottom: 14px;
+}
+
+.contacts__form {
+  position: relative;
+  display: grid;
+  grid-template-rows: 50px 50px 150px 50px;
+  grid-row-gap: 20px;
+}
+
+.contacts__name,
+.contacts__email,
+.contacts__message {
+  background-color: #E9E9E9;
+  border: none;
+  padding-left: 23px;
+}
+
+@include anim-input (".contacts__name", 3px);
+@include anim-input (".contacts__email", 73px);
+
+.contacts__message {
+  padding-top: 15px;
+}
+
+.contacts__btn {
+  max-width: 126px;
+}
+
+/* footer  */
+.footer {
+  background-color: #202020;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  align-items: center;
+}
+
+.footer__logo {
+  margin-bottom: 6px;
+}
+
+.footer__logo-text {
+  @include font-text ("TTFirsNeue", 400, 14px, 18px, #e9e9e9);
+  padding-bottom: 5px;
+}
+
+.footer__text {
+  @include font-text ("Roboto", 400, 16px, 22px, #cacaca);
+  max-width: 371px;
+  padding-left: 10px;
+}
+
+.footer__social-text {
+  @include font-text ("Roboto", 400, 16px, 22px, #cacaca);
+  margin-bottom: 8px;
+}
+
+.footer__social {
+  justify-self: end;
+  text-align: center;
+}
+
+.ok {
+  margin-right: 16px;
+}
+
+.ok svg path,
+.vk svg path {
+  transition: fill 0.3s ease-in-out;
+}
+
+.ok:focus svg path,
+.vk:focus svg path {
+  fill: #BC572B;
+}
+
+.ok:hover svg path,
+.vk:hover svg path {
+  fill: #FF6E30;
+}
+
+.ok:active svg path,
+.vk:active svg path {
+  fill: #CE4307;
+}
