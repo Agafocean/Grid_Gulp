@@ -21,7 +21,8 @@
     "gulp-imagemin": "^6.2.0",    
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "imagemin": "^6.1.0",    
+    "imagemin": "^6.1.0",
+    "node-sass": "^9.0.0",
     "yargs": "^17.7.2"
   }
 }
